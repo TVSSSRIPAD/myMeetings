@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import './AddMeeting.css';
 const AddMeeting = (props) => {
-    const { addMeet } = useContext(GlobalContext);
+    const { addMeet, message } = useContext(GlobalContext);
     useEffect(() => {
         // getTransactions();
         //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -21,6 +21,7 @@ const AddMeeting = (props) => {
             <div className="navbar">
                 BRAND / Add Meeting
             </div>
+            <Alert key={message} variant="primary" style={{"display"  : message ? "block" : "none"}}>{message}</Alert>
             <button className="btn-back-to-meet" onClick={() => handleBack()}>Back</button>
             <div className="add-meet-form">
                 <div className="add-meet-date">
@@ -38,7 +39,7 @@ const AddMeeting = (props) => {
                     <input type="textarea" placeholder="Desc" onChange={(e) => setDesc(e.target.value)}></input>
                 </div>
             </div>
-            <button className="btn-save-meet" onClick={() => addMeet(date, startTime, endTime, desc)}>Save</button>
+            <button className="btn-save-meet" onClick={() => addMeet(date, startTime, endTime, desc)} >Save</button>
         </div>
     );
 };

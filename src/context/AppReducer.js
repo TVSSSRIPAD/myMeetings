@@ -8,9 +8,28 @@ export default (state , action) => {
                 curr : action.curr
             }
         case 'REMOVE_ERROR':
+                return {
+                    state,
+                    error : false
+                }
+        case 'OK':
             return {
                 state,
+                curr : action.curr,
+                message : action.payload,
                 error : false
+            }
+        case 'BUSY':
+            return {
+                state,
+                message : action.payload,
+                curr : action.curr,
+                error : false
+            }
+        case 'CLEAR':
+            return {
+                state,
+                message : null
             }
         case 'ERROR': 
             return {

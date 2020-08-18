@@ -6,8 +6,9 @@ import axios from 'axios'
 const initialState = {
     meetings : [],
     error : null,
-    today : 17,
-    curr : 17,
+    today : 15,
+    curr : 15,
+    message : '',
     loading : true
 } 
 
@@ -22,18 +23,12 @@ export const GlobalProvider = ({children}) => {
     async function getMeetings(dayString) {
         var day = state.curr;
         if(dayString === 'next') day = state.curr + 1;
-        else day = state.curr - 1;
+        else if(dayString === 'prev')day = state.curr - 1;
         
         var date = `${day}`
         try{
             
             const res = await axios.get(` https://cors-anywhere.herokuapp.com/http://fathomless-shelf-5846.herokuapp.com/api/schedule?date="${date}/8/2019}"`);
-            // Sample : {
-            //     start_time: 12:30,
-            //     end_time: 13:00,
-            //     description: "development team of XYZ project: brainstorming session",
-            //     participants: ["Sahil Arora", "Neha"]
-            // }
             console.log(res.data);
             dispatch({
                 type : 'GET_MEETINGS',
@@ -50,8 +45,46 @@ export const GlobalProvider = ({children}) => {
     } 
     async function addMeet(day , startTime, endTime, desc){
         // check logic
-    }
+        console.log(day);
+        var date=+(day[8] +day[9]); //get  date
+        var meets;
+        //get meetings on that date
+        try{
+            
+            const res = await axios.get(` https://cors-anywhere.herokuapp.com/http://fathomless-shelf-5846.herokuapp.com/api/schedule?date="${date}/8/2019}"`);
+            // console.log(res.data);
+            meets = res.data;
+        }catch(err){
+            console.log("Error");
+        }
+        var avail = true;
+        for(var m of meets){
+        //   console.log(m);
+                console.log(m.start_time);
+                // console.log(startTime[0]);
+               if(((startTime[0] + startTime[1]) === (m.start_time[0] + m.start_time[1])) || ((endTime[0] + endTime[1]) === (m.end_time[0] + m.end_time[1]))){
+                   dispatch({
+                    type : 'BUSY',
+                    payload : 'Slot Not Available',
+                    curr : state.curr
+                   })
+                   avail = false;
+               }
+        }
+        if(avail){
+            dispatch({
+                type : 'OK',
+                payload : 'Slot Available. Meeting Added',
+                curr : state.curr
+               })
+        }
 
+    }
+    function clear(){
+        dispatch({
+            type : 'CLEAR'
+        })
+    }
 
     return (<GlobalContext.Provider value={{
         meetings : state.meetings,
@@ -59,8 +92,10 @@ export const GlobalProvider = ({children}) => {
         curr : state.curr,
         loading : state.loading,
         today : state.today,
+        message : state.message,
         getMeetings,
-        addMeet
+        addMeet,
+        clear
     }}>
         {children}
     </GlobalContext.Provider>)

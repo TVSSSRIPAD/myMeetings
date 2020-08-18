@@ -5,9 +5,10 @@ import Meeting from './MeetingItem';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 const List = (props) => {
-    const { getMeetings, meetings, curr, today } = useContext(GlobalContext);
+    const { getMeetings, clear, meetings, curr, today } = useContext(GlobalContext);
     useEffect(() => {
         getMeetings('');
+        clear()
         //eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const handleAdd = () => {
@@ -36,13 +37,13 @@ const List = (props) => {
                     <i className="fa fa-angle-right" aria-hidden="true"></i>
                 </button>
             </div>
-            {meetings.map(meeting => (
+            {meetings && meetings.map(meeting => (
                 <Meeting meeting={meeting} key={meeting.start_time + meeting.end_time} />
             ))}
 
-            <button className="btn-add" disabled={today > curr} onClick={() => handleAdd()}>
+            <Button className="btn-add" disabled={today > curr} onClick={() => handleAdd()}>
                 Add Meeting
-        </button>
+            </Button>
         </div>
     );
 };

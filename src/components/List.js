@@ -1,6 +1,8 @@
-import React , {useContext,useEffect, useState} from 'react';
+import React , {useContext,useEffect} from 'react';
 import {GlobalContext} from '../context/GlobalState';
 import Meeting from './MeetingItem';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 const List = (props) => {
     const {getMeetings, meetings, curr, today} = useContext(GlobalContext);
     useEffect(()=>{
@@ -25,9 +27,9 @@ const List = (props) => {
                 <Meeting meeting = {meeting} key={meeting.start_time + meeting.end_time} />
             ))}
 
-        <button disabled={today > curr} onClick={() => handleAdd()}>
+        <Button className="button" disabled={today > curr} onClick={() => handleAdd()}>
             Add Meeting
-        </button>
+        </Button>
         </div>
     );
 }

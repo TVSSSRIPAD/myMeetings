@@ -7,7 +7,7 @@ const Meeting = ({meeting}) => {
             users+= ` ${i} `
         }
         setPers(users)
-    }, [])
+    }, [meeting])
     // participants = 
     return (
         <div>

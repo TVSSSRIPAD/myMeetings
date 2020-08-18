@@ -23,7 +23,7 @@ const List = (props) => {
     return (
         <div className="main">
             <div className="navbar">
-                BRAND
+                BRAND / Meetings
             </div>
             <div className="navigator">
                 <button className="btn-prev" onClick={() => prevClick()}>

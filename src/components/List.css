@@ -15,6 +15,8 @@
 .navbar {
      background-color: white;
      height: 3rem;
+     font-family: "Nunito", sans-serif;
+     font-weight: bold;
 }
 
 .navigator-date {
@@ -38,16 +40,18 @@
      color: #2e5bff;
      align-self: center;
      font-size: 2rem;
+     outline: none;
 }
 
 .btn-add {
-     margin-top: 10rem;
+     margin-top: 2rem;
+     margin-bottom: 2rem;
      background-color: rgb(46, 91, 255);
      border-radius: 0.2rem;
      color: white;
      font-family: "Nunito", sans-serif;
      font-weight: 600;
      font-size: 0.7rem;
-     padding: 0.2rem 1.2rem 0.2rem 1.2rem;
+     padding: 0.2rem 2rem 0.2rem 2rem;
      border: none;
 }

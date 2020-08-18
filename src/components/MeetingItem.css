@@ -1,17 +1,17 @@
 .meet-item {
-     border: 1px solid red;
-     margin-top: 0.3rem;
-     margin-bottom: 0.3rem;
+     background-color: white;
+     margin-top: 0.8rem;
+     margin-bottom: 0.8rem;
      display: flex;
      flex-flow: row nowrap;
      justify-content: space-between;
      width: 80vw;
      height: 3rem;
      margin-left: 10vw;
+     box-shadow: 5px 10px 18px #e0e0e0;
 }
 
 .meet-time {
-     border: 1px solid green;
      font-family: "Nunito", sans-serif;
      font-weight: bolder;
      font-size: 0.8rem;
@@ -20,8 +20,7 @@
 }
 
 .meet-desc {
-     border: 1px solid green;
-     width: 40rem;
+     width: 80%;
      font-family: "Nunito", sans-serif;
      font-size: 0.7rem;
      align-self: center;
@@ -29,4 +28,5 @@
      margin-right: 2rem;
      padding-top: 0.5rem;
      padding-bottom: 0.5rem;
+     color: grey;
 }

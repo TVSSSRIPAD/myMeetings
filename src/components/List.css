@@ -1,33 +1,49 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
 
-body {
-     background-color: #f5f6fb;
-}
 .navigator {
      display: flex;
      flex-flow: row wrap;
      justify-content: center;
      width: auto;
-     border: red 1px solid;
      margin-top: 2rem;
      margin-bottom: 2rem;
      font-family: "Nunito", sans-serif;
-     font-weight: 600;
      font-size: 1.2rem;
      color: #2e5bff;
 }
 
+.navbar {
+     background-color: white;
+     height: 3rem;
+}
+
+.navigator-date {
+     align-self: center;
+     margin-right: 4rem;
+     margin-left: 4rem;
+     font-weight: 800;
+}
+
 .btn-prev {
-     margin-right: 1rem;
+     background-color: transparent;
+     border: none;
+     color: #2e5bff;
+     align-self: center;
+     font-size: 2rem;
 }
 
 .btn-next {
-     margin-left: 1rem;
+     background-color: transparent;
+     border: none;
+     color: #2e5bff;
+     align-self: center;
+     font-size: 2rem;
 }
 
 .btn-add {
-     margin-top: 2rem;
-     background-color: #2e5bff;
+     margin-top: 10rem;
+     background-color: rgb(46, 91, 255);
+     border-radius: 0.2rem;
      color: white;
      font-family: "Nunito", sans-serif;
      font-weight: 600;

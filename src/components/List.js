@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import './List.css';
 import Meeting from './MeetingItem';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 const List = (props) => {
     const { getMeetings, meetings, curr, today } = useContext(GlobalContext);
     useEffect(() => {
@@ -20,12 +22,19 @@ const List = (props) => {
     };
     return (
         <div className="main">
+            <div className="navbar">
+                BRAND
+            </div>
             <div className="navigator">
-                <button className="btn-prev" onClick={() => prevClick()}>Prev
-                <i className="fa fa-angle-left" aria-hidden="true"></i>
+                <button className="btn-prev" onClick={() => prevClick()}>
+                    <i className="fa fa-angle-left" aria-hidden="true"></i>
                 </button>
-                {curr} Aug 2020
-                <button className="btn-next" onClick={() => nextClick()}>Next</button>
+                <div className="navigator-date">
+                    {curr} Aug 2020
+                </div>
+                <button className="btn-next" onClick={() => nextClick()}>
+                    <i className="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
             </div>
             {meetings.map(meeting => (
                 <Meeting meeting={meeting} key={meeting.start_time + meeting.end_time} />
